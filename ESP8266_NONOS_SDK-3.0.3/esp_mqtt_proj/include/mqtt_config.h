@@ -11,13 +11,13 @@ typedef enum{
 
 /*IMPORTANT: the following configuration maybe need modified*/
 /***********************************************************************************************************************/
-#define CFG_HOLDER    0x00FF55A8    /* Change this value to load default configurations */
+#define CFG_HOLDER    0x00FF5502    /* Change this value to load default configurations */
 
 /*DEFAULT CONFIGURATIONS*/
 
 #define MQTT_HOST            "192.168.0.101" // the IP address or domain name of your MQTT server or MQTT broker ,such as "mqtt.yourdomain.com"
 #define MQTT_PORT            1883    // the listening port of your MQTT server or MQTT broker
-#define MQTT_CLIENT_ID        "ESP Device"    // the ID of yourself, any string is OK,client would use this ID register itself to MQTT server
+#define MQTT_CLIENT_ID        "esp device pysbedroom"    // the ID of yourself, any string is OK,client would use this ID register itself to MQTT server
 #define MQTT_USER            "homeassistant" // your MQTT login name, if MQTT server allow anonymous login,any string is OK, otherwise, please input valid login name which you had registered
 #define MQTT_PASS            "homeassistant" // you MQTT login password, same as above
 #define STA_SSID "Aliu-2.4g"    // your AP/router SSID to config your device networking

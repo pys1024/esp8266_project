@@ -113,9 +113,9 @@ void mqttConnectedCb(uint32_t *args)
     INFO("MQTT: Connected\r\n");
     MQTT_Subscribe(client, COMMAND_TOPIC, 0);
 
-    MQTT_Publish(client, AVAILABLE_TOPIC, AVAILABLE, os_strlen(AVAILABLE), 0, 1);
+    mqtt_publish(AVAILABLE_TOPIC, AVAILABLE);
 
-    MQTT_Publish(client, STATE_TOPIC, DEFAULT_STATE, os_strlen(DEFAULT_STATE), 0, 1);
+    mqtt_publish(STATE_TOPIC, DEFAULT_STATE);
 
 }
 
@@ -149,11 +149,11 @@ void mqttDataCb(uint32_t *args, const char* topic, uint32_t topic_len, const cha
       if (0 != os_strstr(dataBuf, STATE_OFF)) {
         os_printf(MSG_OFF);
         GPIO_OUTPUT_SET(GPIO_ID_PIN(CTRL_GOPIO), GPIO_OFF);
-        MQTT_Publish(client, STATE_TOPIC, STATE_OFF, os_strlen(STATE_OFF), 0, 1);
+        mqtt_publish(STATE_TOPIC, STATE_OFF);
       } else {
         os_printf(MSG_ON);
         GPIO_OUTPUT_SET(GPIO_ID_PIN(CTRL_GOPIO), GPIO_ON);
-        MQTT_Publish(client, STATE_TOPIC, STATE_ON, os_strlen(STATE_ON), 0, 1);
+        mqtt_publish(STATE_TOPIC, STATE_ON);
       }
     }
     os_free(topicBuf);

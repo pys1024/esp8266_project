@@ -14,11 +14,14 @@
 #define MSG_ON "\xbb\x01\xff"
 #define MSG_OFF "\xbb\x02\xff"
 
-#define DEFAULT_STATE STATE_OFF
+#define DEFAULT_STATE STATE_ON
 
-#define STATE_TOPIC "/mqtt/switch/state/airconditioner"
-#define COMMAND_TOPIC "/mqtt/switch/command/airconditioner"
-#define AVAILABLE_TOPIC "/mqtt/switch/available/airconditioner"
+#define STATE_TOPIC "/mqtt/switch/state/pysbedroom"
+#define COMMAND_TOPIC "/mqtt/switch/command/pysbedroom"
+#define AVAILABLE_TOPIC "/mqtt/switch/available/pysbedroom"
 
+#define mqtt_publish(topic, payload) MQTT_Publish(client, topic, \
+                                                  payload, os_strlen(payload),\
+                                                  0, 1);
 #endif
 
