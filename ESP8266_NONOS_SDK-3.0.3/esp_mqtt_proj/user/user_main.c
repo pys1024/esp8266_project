@@ -113,7 +113,11 @@ void mqttConnectedCb(uint32_t *args)
     INFO("MQTT: Connected\r\n");
     MQTT_Subscribe(client, COMMAND_TOPIC, 0);
 
-    mqtt_publish(AVAILABLE_TOPIC, AVAILABLE);
+    if (GPIO_ON == GPIO_INPUT_GET(GPIO_ID_PIN(CTRL_GOPIO))) {
+      mqtt_publish(STATE_TOPIC, STATE_ON);
+    } else {
+      mqtt_publish(STATE_TOPIC, STATE_OFF);
+    }
 
     mqtt_publish(STATE_TOPIC, DEFAULT_STATE);
 
